@@ -76,11 +76,6 @@ export default function Footer() {
                   Keranjang & Checkout
                 </Link>
               </li>
-              <li>
-                <Link href="/admin/login" className="hover:text-amber-400 transition-colors text-stone-500">
-                  Panel Khusus Pemilik Toko (Admin)
-                </Link>
-              </li>
             </ul>
           </div>
         </div>

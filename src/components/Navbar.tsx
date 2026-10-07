@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Cookie, ShoppingBag, Search, Shield, Phone } from 'lucide-react';
+import { Cookie, ShoppingBag, Search, Phone } from 'lucide-react';
 import { useCart } from '@/context/CartContext';
 
 export default function Navbar() {
@@ -65,16 +65,6 @@ export default function Navbar() {
 
         {/* Action Buttons */}
         <div className="flex items-center gap-2.5">
-          {/* Admin link */}
-          <Link
-            href="/admin/dashboard"
-            className="hidden sm:flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-xl border border-stone-200 text-stone-600 hover:text-stone-900 hover:bg-stone-50 transition-colors"
-            title="Masuk ke Panel Pemilik Toko"
-          >
-            <Shield className="w-3.5 h-3.5 text-amber-600" />
-            Admin
-          </Link>
-
           {/* Cart Trigger */}
           <button
             onClick={() => setIsCartOpen(true)}
