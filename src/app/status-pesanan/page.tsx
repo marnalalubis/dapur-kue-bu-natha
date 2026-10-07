@@ -291,7 +291,7 @@ function StatusPesananContent() {
             </div>
             <a
               href={`https://wa.me/6281234567890?text=${encodeURIComponent(
-                `Halo Admin Dapur Bu Sri, saya ingin menanyakan pesanan dengan kode ${order.order_code}.`
+                `Halo Admin Dapur Bu Natha, saya ingin menanyakan pesanan dengan kode ${order.order_code}.`
               )}`}
               target="_blank"
               rel="noopener noreferrer"

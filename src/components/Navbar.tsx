@@ -25,7 +25,7 @@ export default function Navbar() {
           </div>
           <div className="flex flex-col">
             <span className="font-bold text-base sm:text-lg tracking-tight text-stone-900 group-hover:text-amber-800 transition-colors">
-              Dapur Kue Bu Sri
+              Dapur Kue Bu Natha
             </span>
             <span className="text-[11px] sm:text-xs text-amber-700/80 font-medium -mt-0.5">
               Kue Kering Homemade & Butter

@@ -392,7 +392,7 @@ function OrdersContent() {
                     href={`https://wa.me/${normalizePhoneForWA(
                       activeModalOrder.customer_phone
                     )}?text=${encodeURIComponent(
-                      `Halo Ibu/Bpk *${activeModalOrder.customer_name}*, konfirmasi dari Dapur Kue Bu Sri terkait pesanan *${activeModalOrder.order_code}* status saat ini: *${activeModalOrder.status}*.`
+                      `Halo Ibu/Bpk *${activeModalOrder.customer_name}*, konfirmasi dari Dapur Kue Bu Natha terkait pesanan *${activeModalOrder.order_code}* status saat ini: *${activeModalOrder.status}*.`
                     )}`}
                     target="_blank"
                     rel="noopener noreferrer"

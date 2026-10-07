@@ -1,5 +1,5 @@
 # 🚀 Panduan Deployment & Go-Live (Online ke Publik)
-## Dapur Kue Kering Bu Sri
+## Dapur Kue Kering Bu Natha
 
 Dokumen ini memuat panduan lengkap langkah demi langkah untuk meluncurkan aplikasi pemesanan kue kering ke internet agar dapat diakses oleh pelanggan umum melalui browser HP dan komputer.
 
@@ -31,9 +31,9 @@ Metode ini sangat disarankan jika Anda ingin website online 24 jam tanpa perlu m
    ```bash
    git init
    git add .
-   git commit -m "Siap deploy Dapur Kue Bu Sri"
+   git commit -m "Siap deploy Dapur Kue Bu Natha"
    git branch -M main
-   git remote add origin https://github.com/username-anda/dapur-kue-busri.git
+   git remote add origin https://github.com/username-anda/dapur-kue-bunatha.git
    git push -u origin main
    ```
 3. Di Dashboard Railway, klik **New Project** → **Deploy from GitHub repo** → pilih repositori toko kue Anda.
@@ -44,7 +44,7 @@ Metode ini sangat disarankan jika Anda ingin website online 24 jam tanpa perlu m
    - `ADMIN_USERNAME` = `admin`
    - `ADMIN_PASSWORD` = `KataSandiRahasiaAnda99!`
    - `NEXT_PUBLIC_BASE_URL` = `https://nama-proyek-anda.up.railway.app`
-6. Railway akan otomatis mem-build dan memberikan domain gratis `https://xxx.up.railway.app` yang langsung bisa diakses publik dengan HTTPS. Anda juga bisa menghubungkan domain pribadi (misal: `dapurkuebusri.com`).
+6. Railway akan otomatis mem-build dan memberikan domain gratis `https://xxx.up.railway.app` yang langsung bisa diakses publik dengan HTTPS. Anda juga bisa menghubungkan domain pribadi (misal: `dapurkuebunatha.com`).
 
 ---
 
@@ -61,8 +61,8 @@ Proyek ini telah dilengkapi dengan file `Dockerfile` dan `docker-compose.yml`.
    ```
 2. Salin folder proyek ke VPS:
    ```bash
-   git clone https://github.com/username-anda/dapur-kue-busri.git
-   cd dapur-kue-busri
+   git clone https://github.com/username-anda/dapur-kue-bunatha.git
+   cd dapur-kue-bunatha
    ```
 3. Buat file `.env` di VPS:
    ```bash
@@ -78,7 +78,7 @@ Proyek ini telah dilengkapi dengan file `Dockerfile` dan `docker-compose.yml`.
 6. Untuk memasang domain dan SSL gratis (Let's Encrypt), gunakan Nginx reverse proxy:
    ```nginx
    server {
-       server_name dapurkuebusri.com www.dapurkuebusri.com;
+       server_name dapurkuebunatha.com www.dapurkuebunatha.com;
 
        location / {
            proxy_pass http://localhost:3000;
@@ -92,7 +92,7 @@ Proyek ini telah dilengkapi dengan file `Dockerfile` dan `docker-compose.yml`.
    ```
    Lalu pasang SSL:
    ```bash
-   sudo certbot --nginx -d dapurkuebusri.com -d www.dapurkuebusri.com
+   sudo certbot --nginx -d dapurkuebunatha.com -d www.dapurkuebunatha.com
    ```
 
 ---
@@ -132,7 +132,7 @@ Aplikasi Next.js ini 100% kompatibel dengan Vercel:
 
 ---
 
-## 📱 Menghubungkan Domain Sendiri (misal: `dapurkuebusri.com` atau `kuebusri.id`)
+## 📱 Menghubungkan Domain Sendiri (misal: `dapurkuebunatha.com` atau `kuebunatha.id`)
 
 1. Beli domain di penyedia domain lokal seperti Niagahoster, DomaiNesia, RumahWeb, atau Cloudflare (harga domain `.my.id` sekitar Rp 12.000/tahun, atau `.com` sekitar Rp 130.000/tahun).
 2. Atur DNS Records di panel domain Anda:
@@ -145,6 +145,6 @@ Aplikasi Next.js ini 100% kompatibel dengan Vercel:
 ## 📢 Promosi Link ke Pelanggan
 
 Setelah online, Anda dapat:
-* Memasang link di **Bio Instagram & TikTok**: *"Pesan Kue Kering Lebaran: https://dapurkuebusri.com"*
-* Membagikan link di **Broadcast / Status WhatsApp**: *"Katalog kue kering Lebaran Dapur Bu Sri sudah buka! Cek menu & pesan langsung di: https://dapurkuebusri.com"*
+* Memasang link di **Bio Instagram & TikTok**: *"Pesan Kue Kering Lebaran: https://dapurkuebunatha.com"*
+* Membagikan link di **Broadcast / Status WhatsApp**: *"Katalog kue kering Lebaran Dapur Bu Natha sudah buka! Cek menu & pesan langsung di: https://dapurkuebunatha.com"*
 * Mencetak **QR Code** untuk ditaruh di meja etalase toko.

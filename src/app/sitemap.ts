@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://dapurkuebusri.com';
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://dapurkuebunatha.com';
   const now = new Date();
 
   return [

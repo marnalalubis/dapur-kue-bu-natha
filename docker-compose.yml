@@ -1,9 +1,9 @@
 services:
-  dapur-kue-busri:
+  dapur-kue-bunatha:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: dapur-kue-busri
+    container_name: dapur-kue-bunatha
     restart: unless-stopped
     ports:
       - "3000:3000"

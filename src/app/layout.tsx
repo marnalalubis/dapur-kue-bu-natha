@@ -9,7 +9,7 @@ import MobileBottomNav from '@/components/MobileBottomNav';
 
 
 export const metadata: Metadata = {
-  title: 'Dapur Kue Bu Sri — Pesan Kue Kering Homemade Premium',
+  title: 'Dapur Kue Bu Natha — Pesan Kue Kering Homemade Premium',
   description:
     'Pemesanan aneka kue kering klasik dan modern khas Lebaran (Nastar Wisman, Kastengel Keju Edam, Putri Salju Mede, Sagu Keju). Fresh from the oven langsung ke rumah Anda.',
   keywords: [
@@ -19,21 +19,21 @@ export const metadata: Metadata = {
     'Putri Salju',
     'Sagu Keju',
     'Kue Lebaran',
-    'Dapur Kue Bu Sri',
+    'Dapur Kue Bu Natha',
     'Kue Homemade',
   ],
-  authors: [{ name: 'Dapur Kue Bu Sri' }],
+  authors: [{ name: 'Dapur Kue Bu Natha' }],
   openGraph: {
-    title: 'Dapur Kue Bu Sri — Pesan Kue Kering Homemade Premium',
+    title: 'Dapur Kue Bu Natha — Pesan Kue Kering Homemade Premium',
     description:
       'Pesan aneka kue kering klasik & modern dengan butter pilihan. Fresh from the oven tanpa ribet via WhatsApp.',
     type: 'website',
     locale: 'id_ID',
-    siteName: 'Dapur Kue Bu Sri',
+    siteName: 'Dapur Kue Bu Natha',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Dapur Kue Bu Sri — Pesan Kue Kering Homemade Premium',
+    title: 'Dapur Kue Bu Natha — Pesan Kue Kering Homemade Premium',
     description: 'Pesan kue kering homemade fresh from the oven langsung ke rumah.',
   },
 };

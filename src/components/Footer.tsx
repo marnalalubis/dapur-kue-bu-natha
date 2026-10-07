@@ -22,7 +22,7 @@ export default function Footer() {
               <div className="w-9 h-9 rounded-xl bg-amber-500 flex items-center justify-center text-stone-900">
                 <Cookie className="w-5 h-5 text-white" />
               </div>
-              <span className="font-bold text-lg text-white">Dapur Kue Bu Sri</span>
+              <span className="font-bold text-lg text-white">Dapur Kue Bu Natha</span>
             </div>
             <p className="text-sm text-stone-400 leading-relaxed">
               Kue kering premium buatan rumahan dengan bahan butter berkualitas tinggi.
@@ -86,7 +86,7 @@ export default function Footer() {
         </div>
 
         <div className="pt-8 border-t border-stone-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-500">
-          <p>© 2026 Dapur Kue Bu Sri. Hak Cipta Dilindungi.</p>
+          <p>© 2026 Dapur Kue Bu Natha. Hak Cipta Dilindungi.</p>
           <p className="flex items-center gap-1">
             Dibuat dengan <Heart className="w-3.5 h-3.5 text-rose-500 fill-rose-500" /> untuk pecinta kue kering Indonesia.
           </p>

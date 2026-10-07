@@ -152,7 +152,7 @@ export default function CustomerRecapPage() {
             const isExpanded = expandedPhone === cust.customer_phone;
             const cleanPhone = normalizePhoneForWA(cust.customer_phone);
             const waGreetUrl = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(
-              `Halo Ibu/Bpk *${cust.customer_name}*, terima kasih telah menjadi pelanggan setia Dapur Kue Bu Sri! Ada kue yang ingin dipesan lagi? 🙏`
+              `Halo Ibu/Bpk *${cust.customer_name}*, terima kasih telah menjadi pelanggan setia Dapur Kue Bu Natha! Ada kue yang ingin dipesan lagi? 🙏`
             )}`;
 
             return (

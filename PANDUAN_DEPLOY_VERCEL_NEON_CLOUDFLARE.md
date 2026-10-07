@@ -1,5 +1,5 @@
 # 🚀 Panduan Deploy Cepat: GitHub + Neon + Vercel + Cloudflare
-## Dapur Kue Kering Bu Sri
+## Dapur Kue Kering Bu Natha
 
 Karena Anda sudah memiliki keempat akun (**GitHub**, **Neon.tech**, **Vercel**, dan **Cloudflare**), proses peluncuran toko online ini dapat diselesaikan hanya dalam **4 langkah mudah** (sekitar 5–10 menit)!
 
@@ -11,7 +11,7 @@ Aplikasi sudah kami lengkapi dengan adapter **Neon Serverless PostgreSQL** otoma
 
 1. Buka [console.neon.tech](https://console.neon.tech/) dan login.
 2. Klik tombol **"Create Project"** (atau New Project).
-   * **Project Name**: `dapur-kue-bu-sri`
+   * **Project Name**: `dapur-kue-bu-natha`
    * **Region**: Pilih yang terdekat (misal: `ap-southeast-1` Singapore atau default).
    * Klik **Create Project**.
 3. Di halaman Dashboard Neon, pada kotak **Connection Details**, pilih opsi **"Postgres"** atau **".env"**.
@@ -27,7 +27,7 @@ Aplikasi sudah kami lengkapi dengan adapter **Neon Serverless PostgreSQL** otoma
 
 1. Buka [github.com](https://github.com/) dan login.
 2. Klik tombol **New** (ikon plus di kanan atas) untuk membuat repositori baru:
-   * **Repository name**: `dapur-kue-bu-sri`
+   * **Repository name**: `dapur-kue-bu-natha`
    * Pilih **Private** (atau Public).
    * Jangan centang "Add a README file" (karena file proyek lokal sudah lengkap).
    * Klik **Create repository**.
@@ -35,9 +35,9 @@ Aplikasi sudah kami lengkapi dengan adapter **Neon Serverless PostgreSQL** otoma
    ```bash
    git init
    git add .
-   git commit -m "Siap deploy Dapur Kue Bu Sri ke Vercel dan Neon"
+   git commit -m "Siap deploy Dapur Kue Bu Natha ke Vercel dan Neon"
    git branch -M main
-   git remote add origin https://github.com/USERNAME_GITHUB_ANDA/dapur-kue-bu-sri.git
+   git remote add origin https://github.com/USERNAME_GITHUB_ANDA/dapur-kue-bu-natha.git
    git push -u origin main
    ```
    *(Ganti `USERNAME_GITHUB_ANDA` dengan username GitHub Anda)*.
@@ -67,11 +67,11 @@ Aplikasi sudah kami lengkapi dengan adapter **Neon Serverless PostgreSQL** otoma
 
 ### 📌 LANGKAH 4: Hubungkan Domain Sendiri di Cloudflare (Opsional)
 
-Jika Anda ingin memakai domain sendiri (misal: `dapurkuebusri.com`):
+Jika Anda ingin memakai domain sendiri (misal: `dapurkuebunatha.com`):
 
 1. **Di Dashboard Vercel**:
    * Buka project Anda → pilih tab **Settings** → **Domains**.
-   * Ketikkan domain Anda (misal `dapurkuebusri.com`) dan klik **Add**.
+   * Ketikkan domain Anda (misal `dapurkuebunatha.com`) dan klik **Add**.
    * Vercel akan menampilkan DNS target (biasanya CNAME `cname.vercel-dns.com` atau A Record `76.76.21.21`).
 2. **Di Dashboard Cloudflare**:
    * Buka [dash.cloudflare.com](https://dash.cloudflare.com/) → pilih domain Anda.

@@ -177,7 +177,7 @@ function OrderConfirmationContent() {
                 Pesanan Resmi Masuk ke Antrean Dapur Toko
               </h3>
               <p className="text-xs text-stone-600 leading-relaxed mt-0.5">
-                Pesanan Anda telah langsung tersimpan ke sistem database dapur Bu Sri dan sudah masuk ke <strong>Rekap Pesanan</strong> serta <strong>Jadwal Pemanggangan Kue</strong> di dashboard admin.
+                Pesanan Anda telah langsung tersimpan ke sistem database dapur Bu Natha dan sudah masuk ke <strong>Rekap Pesanan</strong> serta <strong>Jadwal Pemanggangan Kue</strong> di dashboard admin.
               </p>
             </div>
           </div>

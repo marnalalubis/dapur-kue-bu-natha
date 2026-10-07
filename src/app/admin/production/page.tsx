@@ -213,7 +213,7 @@ export default function ProductionPlanningPage() {
         <div className="flex justify-between items-start">
           <div>
             <h1 className="text-2xl font-black uppercase tracking-tight text-stone-950">
-              Dapur Kue Kering Bu Sri
+              Dapur Kue Kering Bu Natha
             </h1>
             <p className="text-xs text-stone-700 font-semibold">
               Lembar Rencana Produksi & Antrean Oven (Baking Work Order)

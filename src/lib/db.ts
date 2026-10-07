@@ -183,7 +183,7 @@ const INITIAL_PRODUCTS: Product[] = [
 ];
 
 const INITIAL_SETTINGS: StoreSettings = {
-  store_name: 'Dapur Kue Kering Bu Sri',
+  store_name: 'Dapur Kue Kering Bu Natha',
   store_tagline: 'Kue Kering Homemade Fresh from The Oven dengan Butter Pilihan',
   store_phone: '081234567890',
   store_address: 'Jl. Melati Indah No. 42, Kebayoran Baru, Jakarta Selatan',
@@ -192,7 +192,7 @@ const INITIAL_SETTINGS: StoreSettings = {
   delivery_note:
     'Pengiriman manual area Jadetabek via Kurir Instan (Grab/Gojek) atau Paxel untuk luar kota. Biaya ongkir dikonfirmasi via WA.',
   payment_info:
-    'Pembayaran offline saat ambil di tempat / COD / Transfer BCA: 123-456-7890 a/n Sri Handayani.',
+    'Pembayaran offline saat ambil di tempat / COD / Transfer BCA: 123-456-7890 a/n Bu Natha.',
   is_store_open: true,
   closed_reason: 'Toko sedang dalam masa pemeliharaan oven rutin.',
 };
@@ -375,7 +375,7 @@ async function ensureDbInitialized(): Promise<DatabaseSchema> {
           admin: {
             username: 'admin',
             passwordHash: 'admin123',
-            name: 'Pemilik Toko (Bu Sri)',
+            name: 'Pemilik Toko (Bu Natha)',
           },
         };
       }
@@ -416,7 +416,7 @@ async function ensureDbInitialized(): Promise<DatabaseSchema> {
       admin: {
         username: 'admin',
         passwordHash: 'admin123', // Default admin login
-        name: 'Pemilik Toko (Bu Sri)',
+        name: 'Pemilik Toko (Bu Natha)',
       },
     };
     await fs.writeFile(DB_FILE, JSON.stringify(initialData, null, 2), 'utf-8');

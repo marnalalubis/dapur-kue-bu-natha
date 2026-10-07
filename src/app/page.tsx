@@ -122,7 +122,7 @@ export default function HomePage() {
                 <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white aspect-4/3 sm:aspect-square group">
                   <img
                     src="https://images.unsplash.com/photo-1599785209707-a456fc1337bb?auto=format&fit=crop&w=800&q=80"
-                    alt="Nastar Wisman Dapur Bu Sri"
+                    alt="Nastar Wisman Dapur Bu Natha"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-stone-900/80 via-transparent to-transparent flex flex-col justify-end p-5 text-white">

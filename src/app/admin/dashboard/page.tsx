@@ -71,7 +71,7 @@ export default function AdminDashboardPage() {
       {/* Page Header */}
       <div>
         <h1 className="text-2xl sm:text-3xl font-black text-stone-900 tracking-tight">
-          Dashboard Toko Kue Bu Sri
+          Dashboard Toko Kue Bu Natha
         </h1>
         <p className="text-xs sm:text-sm text-stone-500 mt-1">
           Pantau pesanan masuk, antrean panggangan toples kue, dan histori pelanggan.

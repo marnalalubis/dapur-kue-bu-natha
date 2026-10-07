@@ -45,7 +45,7 @@ export default function AdminLoginPage() {
             <Cookie className="w-7 h-7 text-white" />
           </div>
           <h1 className="text-2xl font-black text-stone-900">
-            Admin Dapur Bu Sri
+            Admin Dapur Bu Natha
           </h1>
           <p className="text-xs text-stone-500">
             Masuk untuk mengelola pesanan, stok produksi, dan rekap pelanggan.

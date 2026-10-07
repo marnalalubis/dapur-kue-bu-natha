@@ -38,14 +38,14 @@ export default function OrderPrintModal({
 
   if (!isOpen) return null;
 
-  const storeName = settings?.store_name || 'Dapur Kue Kering Bu Sri';
+  const storeName = settings?.store_name || 'Dapur Kue Kering Bu Natha';
   const storeTagline =
     settings?.store_tagline || 'Kue Kering Homemade Fresh from The Oven dengan Butter Pilihan';
   const storePhone = settings?.store_phone || '0812-3456-7890';
   const storeAddress =
     settings?.store_address || 'Jl. Melati Indah No. 42, Kebayoran Baru, Jakarta Selatan';
   const paymentInfo =
-    settings?.payment_info || 'COD / Ambil di Tempat / Transfer BCA: 123-456-7890 a/n Sri Handayani';
+    settings?.payment_info || 'COD / Ambil di Tempat / Transfer BCA: 123-456-7890 a/n Bu Natha';
 
   const totalToples = order.items.reduce((sum, it) => sum + it.quantity, 0);
 
@@ -367,9 +367,9 @@ export default function OrderPrintModal({
                       <p className="font-bold underline">({order.customer_name})</p>
                     </div>
                     <div>
-                      <p>Dapur Bu Sri,</p>
+                      <p>Dapur Bu Natha,</p>
                       <div className="h-14" />
-                      <p className="font-bold underline">( Sri Handayani )</p>
+                      <p className="font-bold underline">( Bu Natha )</p>
                     </div>
                   </div>
                 </div>
@@ -416,7 +416,7 @@ export default function OrderPrintModal({
                 </div>
                 <div className="text-xs text-stone-800 leading-snug pt-1">
                   <strong>Alamat:</strong>{' '}
-                  {order.customer_address || 'Pengambilan langsung di tempat (Toko Bu Sri)'}
+                  {order.customer_address || 'Pengambilan langsung di tempat (Toko Bu Natha)'}
                 </div>
                 {order.customer_note && (
                   <div className="text-[11px] text-stone-700 pt-1 italic">
