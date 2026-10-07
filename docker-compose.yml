@@ -1,0 +1,19 @@
+services:
+  dapur-kue-busri:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: dapur-kue-busri
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - NEXT_PUBLIC_BASE_URL=${NEXT_PUBLIC_BASE_URL:-http://localhost:3000}
+      - ADMIN_USERNAME=${ADMIN_USERNAME:-admin}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD:-admin123}
+      - ADMIN_SESSION_SECRET=${ADMIN_SESSION_SECRET:-kue-super-secret-production-token-2026}
+    volumes:
+      # Persistent storage agar database order & foto produk tidak hilang saat restart
+      - ./data:/app/data
+      - ./public/uploads:/app/public/uploads

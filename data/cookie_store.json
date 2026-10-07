@@ -1,0 +1,353 @@
+{
+  "categories": [
+    {
+      "id": "cat-1",
+      "name": "Kue Klasik Lebaran",
+      "slug": "kue-klasik"
+    },
+    {
+      "id": "cat-2",
+      "name": "Aneka Keju Spesial",
+      "slug": "aneka-keju"
+    },
+    {
+      "id": "cat-3",
+      "name": "Kreasi Cokelat & Manis",
+      "slug": "cokelat-manis"
+    },
+    {
+      "id": "cat-4",
+      "name": "Kue Modern & Renyah",
+      "slug": "kue-modern"
+    }
+  ],
+  "products": [
+    {
+      "id": "prod-1",
+      "name": "Nastar Wisman Nanas Asli",
+      "slug": "nastar-wisman-nanas-asli",
+      "description": "Nastar lembut lumer di mulut dengan butter Wijsman premium dan selai nanas asli buatan sendiri tanpa pengawet. Manis asamnya pas dan beraroma harum.",
+      "price": 95000,
+      "weightGrams": 500,
+      "packaging": "Toples 500g",
+      "category_id": "cat-1",
+      "category_name": "Kue Klasik Lebaran",
+      "image_url": "https://images.unsplash.com/photo-1599785209707-a456fc1337bb?auto=format&fit=crop&w=800&q=80",
+      "is_available": true,
+      "is_featured": true,
+      "created_at": "2026-09-01T00:00:00.000Z",
+      "updated_at": "2026-10-07T05:21:48.786Z",
+      "ready_stock": 5
+    },
+    {
+      "id": "prod-2",
+      "name": "Kastengel Keju Edam & Kraft",
+      "slug": "kastengel-keju-edam-kraft",
+      "description": "Kue keju legendaris dengan paduan keju Edam tua impor yang gurih pekat dan taburan keju cheddar melimpah. Renyah, gurih, dan bikin nagih.",
+      "price": 105000,
+      "weightGrams": 500,
+      "packaging": "Toples 500g",
+      "category_id": "cat-2",
+      "category_name": "Aneka Keju Spesial",
+      "image_url": "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=800&q=80",
+      "is_available": true,
+      "is_featured": true,
+      "created_at": "2026-09-01T00:00:00.000Z",
+      "updated_at": "2026-10-07T05:21:49.818Z",
+      "ready_stock": 0
+    },
+    {
+      "id": "prod-3",
+      "name": "Putri Salju Mede Lembut",
+      "slug": "putri-salju-mede-lembut",
+      "description": "Sensasi dingin gula donat berpadu dengan adonan kue kaya kacang mede sangrai halus. Lumer seketika saat digigit.",
+      "price": 90000,
+      "weightGrams": 500,
+      "packaging": "Toples 500g",
+      "category_id": "cat-1",
+      "category_name": "Kue Klasik Lebaran",
+      "image_url": "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80",
+      "is_available": true,
+      "is_featured": true,
+      "created_at": "2026-09-02T00:00:00.000Z",
+      "updated_at": "2026-10-07T05:21:50.788Z",
+      "ready_stock": 0
+    },
+    {
+      "id": "prod-4",
+      "name": "Sagu Keju Lumer Spesial",
+      "slug": "sagu-keju-lumer-spesial",
+      "description": "Dibuat dari tepung sagu sangrai daun pandan, santan kental, dan keju melimpah. Tekstur sangat rapuh dan langsung lumer di langit-langit mulut.",
+      "price": 85000,
+      "weightGrams": 500,
+      "packaging": "Toples 500g",
+      "category_id": "cat-2",
+      "category_name": "Aneka Keju Spesial",
+      "image_url": "https://images.unsplash.com/photo-1548848221-0c2e497ed557?auto=format&fit=crop&w=800&q=80",
+      "is_available": true,
+      "is_featured": false,
+      "created_at": "2026-09-03T00:00:00.000Z",
+      "updated_at": "2026-09-03T00:00:00.000Z",
+      "ready_stock": 0
+    },
+    {
+      "id": "prod-5",
+      "name": "Lidah Kucing Renyah Butter",
+      "slug": "lidah-kucing-renyah-butter",
+      "description": "Tipis, renyah, dan harum butter harum semerbak. Sangat pas untuk teman minum kopi atau teh sore hari bersama keluarga.",
+      "price": 80000,
+      "weightGrams": 400,
+      "packaging": "Toples 400g",
+      "category_id": "cat-4",
+      "category_name": "Kue Modern & Renyah",
+      "image_url": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80",
+      "is_available": true,
+      "is_featured": false,
+      "created_at": "2026-09-04T00:00:00.000Z",
+      "updated_at": "2026-09-04T00:00:00.000Z",
+      "ready_stock": 0
+    },
+    {
+      "id": "prod-6",
+      "name": "Semprit Dahlia Cokelat Mede",
+      "slug": "semprit-dahlia-cokelat-mede",
+      "description": "Bentuk bunga dahlia klasik dengan cokelat bubuk Belanda premium dan choco chips di tengahnya. Rasa cokelatnya pekat dan renyah.",
+      "price": 75000,
+      "weightGrams": 450,
+      "packaging": "Toples 450g",
+      "category_id": "cat-3",
+      "category_name": "Kreasi Cokelat & Manis",
+      "image_url": "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=800&q=80",
+      "is_available": true,
+      "is_featured": false,
+      "created_at": "2026-09-05T00:00:00.000Z",
+      "updated_at": "2026-09-05T00:00:00.000Z",
+      "ready_stock": 0
+    },
+    {
+      "id": "prod-7",
+      "name": "Palm Cheese Cookies (Gula Palem)",
+      "slug": "palm-cheese-cookies-gula-palem",
+      "description": "Paduan unik adonan keju gurih dibalut taburan gula palem organik yang wangi karamel. Sensasi manis gurih yang sangat istimewa.",
+      "price": 90000,
+      "weightGrams": 500,
+      "packaging": "Toples 500g",
+      "category_id": "cat-2",
+      "category_name": "Aneka Keju Spesial",
+      "image_url": "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=800&q=80",
+      "is_available": true,
+      "is_featured": false,
+      "created_at": "2026-09-06T00:00:00.000Z",
+      "updated_at": "2026-09-06T00:00:00.000Z",
+      "ready_stock": 0
+    },
+    {
+      "id": "prod-8",
+      "name": "Almond Crispy Cheese Spesial",
+      "slug": "almond-crispy-cheese-spesial",
+      "description": "Kepingan kue tipis super renyah dengan taburan keju kering dan irisan kacang almond panggang renyah. Sangat eksklusif untuk hantaran.",
+      "price": 85000,
+      "weightGrams": 350,
+      "packaging": "Toples 350g",
+      "category_id": "cat-4",
+      "category_name": "Kue Modern & Renyah",
+      "image_url": "https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?auto=format&fit=crop&w=800&q=80",
+      "is_available": true,
+      "is_featured": true,
+      "created_at": "2026-09-07T00:00:00.000Z",
+      "updated_at": "2026-09-07T00:00:00.000Z",
+      "ready_stock": 0
+    }
+  ],
+  "orders": [
+    {
+      "id": "ord-1791349350984",
+      "order_code": "KK-20261007-0005",
+      "customer_name": "Marnala",
+      "customer_phone": "08123652542",
+      "customer_address": "Jl. Pardede onan Balige",
+      "customer_note": "",
+      "fulfillment_method": "delivery",
+      "subtotal": 200000,
+      "delivery_fee": 0,
+      "grand_total": 200000,
+      "status": "Baru",
+      "items": [
+        {
+          "id": "item-1791349350984-p0it",
+          "order_id": "ord-1791349350984",
+          "product_id": "prod-1",
+          "product_name": "Nastar Wisman Nanas Asli",
+          "packaging": "Toples 500g",
+          "price": 95000,
+          "quantity": 1,
+          "subtotal": 95000,
+          "image_url": "https://images.unsplash.com/photo-1599785209707-a456fc1337bb?auto=format&fit=crop&w=800&q=80"
+        },
+        {
+          "id": "item-1791349350984-uuss",
+          "order_id": "ord-1791349350984",
+          "product_id": "prod-2",
+          "product_name": "Kastengel Keju Edam & Kraft",
+          "packaging": "Toples 500g",
+          "price": 105000,
+          "quantity": 1,
+          "subtotal": 105000,
+          "image_url": "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=800&q=80"
+        }
+      ],
+      "created_at": "2026-10-07T05:02:30.984Z",
+      "updated_at": "2026-10-07T05:02:30.984Z"
+    },
+    {
+      "id": "ord-1",
+      "order_code": "KK-20261006-0001",
+      "customer_name": "Ibu Ratna Dewi",
+      "customer_phone": "081298765432",
+      "customer_address": "Komp. Bintaro Jaya Sektor 9 Blok H-12, Tangerang Selatan",
+      "customer_note": "Tolong jangan terlalu gosong ya kuenya.",
+      "fulfillment_method": "delivery",
+      "subtotal": 285000,
+      "delivery_fee": 0,
+      "grand_total": 285000,
+      "status": "Baru",
+      "items": [
+        {
+          "id": "item-1",
+          "order_id": "ord-1",
+          "product_id": "prod-1",
+          "product_name": "Nastar Wisman Nanas Asli",
+          "packaging": "Toples 500g",
+          "price": 95000,
+          "quantity": 2,
+          "subtotal": 190000,
+          "image_url": "https://images.unsplash.com/photo-1599785209707-a456fc1337bb?auto=format&fit=crop&w=800&q=80"
+        },
+        {
+          "id": "item-2",
+          "order_id": "ord-1",
+          "product_id": "prod-3",
+          "product_name": "Putri Salju Mede Lembut",
+          "packaging": "Toples 500g",
+          "price": 90000,
+          "quantity": 1,
+          "subtotal": 90000,
+          "image_url": "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80"
+        }
+      ],
+      "created_at": "2026-10-06T14:30:00.000Z",
+      "updated_at": "2026-10-06T14:30:00.000Z"
+    },
+    {
+      "id": "ord-2",
+      "order_code": "KK-20261006-0002",
+      "customer_name": "Bpk. Hendra Wijaya",
+      "customer_phone": "081388776655",
+      "customer_address": "",
+      "customer_note": "Ambil sekitar jam 4 sore besok ya bu.",
+      "fulfillment_method": "pickup",
+      "subtotal": 315000,
+      "delivery_fee": 0,
+      "grand_total": 315000,
+      "status": "Diproses",
+      "items": [
+        {
+          "id": "item-3",
+          "order_id": "ord-2",
+          "product_id": "prod-2",
+          "product_name": "Kastengel Keju Edam & Kraft",
+          "packaging": "Toples 500g",
+          "price": 105000,
+          "quantity": 3,
+          "subtotal": 315000,
+          "image_url": "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=800&q=80"
+        }
+      ],
+      "created_at": "2026-10-06T16:15:00.000Z",
+      "updated_at": "2026-10-06T17:00:00.000Z"
+    },
+    {
+      "id": "ord-3",
+      "order_code": "KK-20261005-0003",
+      "customer_name": "Ibu Ratna Dewi",
+      "customer_phone": "081298765432",
+      "customer_address": "Komp. Bintaro Jaya Sektor 9 Blok H-12, Tangerang Selatan",
+      "customer_note": "Pesanan sebelumnya enak sekali, mau tambah lagi.",
+      "fulfillment_method": "delivery",
+      "subtotal": 190000,
+      "delivery_fee": 0,
+      "grand_total": 190000,
+      "status": "Selesai",
+      "items": [
+        {
+          "id": "item-4",
+          "order_id": "ord-3",
+          "product_id": "prod-1",
+          "product_name": "Nastar Wisman Nanas Asli",
+          "packaging": "Toples 500g",
+          "price": 95000,
+          "quantity": 2,
+          "subtotal": 190000,
+          "image_url": "https://images.unsplash.com/photo-1599785209707-a456fc1337bb?auto=format&fit=crop&w=800&q=80"
+        }
+      ],
+      "created_at": "2026-10-05T09:00:00.000Z",
+      "updated_at": "2026-10-05T15:00:00.000Z"
+    },
+    {
+      "id": "ord-4",
+      "order_code": "KK-20261007-0001",
+      "customer_name": "Siti Nurhaliza",
+      "customer_phone": "085712349988",
+      "customer_address": "Jl. Gandaria Tengah II No. 8, Jaksel",
+      "customer_note": "Bungkus pita untuk hadiah ya.",
+      "fulfillment_method": "delivery",
+      "subtotal": 265000,
+      "delivery_fee": 0,
+      "grand_total": 265000,
+      "status": "Diproses",
+      "items": [
+        {
+          "id": "item-5",
+          "order_id": "ord-4",
+          "product_id": "prod-1",
+          "product_name": "Nastar Wisman Nanas Asli",
+          "packaging": "Toples 500g",
+          "price": 95000,
+          "quantity": 1,
+          "subtotal": 95000,
+          "image_url": "https://images.unsplash.com/photo-1599785209707-a456fc1337bb?auto=format&fit=crop&w=800&q=80"
+        },
+        {
+          "id": "item-6",
+          "order_id": "ord-4",
+          "product_id": "prod-4",
+          "product_name": "Sagu Keju Lumer Spesial",
+          "packaging": "Toples 500g",
+          "price": 85000,
+          "quantity": 2,
+          "subtotal": 170000,
+          "image_url": "https://images.unsplash.com/photo-1548848221-0c2e497ed557?auto=format&fit=crop&w=800&q=80"
+        }
+      ],
+      "created_at": "2026-10-07T07:15:00.000Z",
+      "updated_at": "2026-10-07T07:45:00.000Z"
+    }
+  ],
+  "settings": {
+    "store_name": "Dapur Kue Kering Bu Sri",
+    "store_tagline": "Kue Kering Homemade Fresh from The Oven dengan Butter Pilihan",
+    "store_phone": "081234567890",
+    "store_address": "Jl. Melati Indah No. 42, Kebayoran Baru, Jakarta Selatan",
+    "pickup_instructions": "Pengambilan pesanan tersedia setiap hari pukul 09.00 - 18.00 WIB. Mohon informasikan 1 jam sebelum tiba via WhatsApp.",
+    "delivery_note": "Pengiriman manual area Jadetabek via Kurir Instan (Grab/Gojek) atau Paxel untuk luar kota. Biaya ongkir dikonfirmasi via WA.",
+    "payment_info": "Pembayaran offline saat ambil di tempat / COD / Transfer BCA: 123-456-7890 a/n Sri Handayani.",
+    "is_store_open": true,
+    "closed_reason": "Toko sedang dalam masa pemeliharaan oven rutin."
+  },
+  "admin": {
+    "username": "admin",
+    "passwordHash": "admin123",
+    "name": "Pemilik Toko (Bu Sri)"
+  }
+}
