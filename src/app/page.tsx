@@ -20,6 +20,7 @@ import ProductCard from '@/components/ProductCard';
 import { useCart } from '@/context/CartContext';
 import { useStore } from '@/context/StoreContext';
 import { formatRupiah } from '@/lib/format';
+import DominoLettering from '@/components/DominoLettering';
 
 export default function HomePage() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -62,6 +63,43 @@ export default function HomePage() {
       return matchCat && matchQuery;
     });
   }, [products, selectedCategory, searchQuery]);
+
+  if (isLoading) {
+    return (
+      <div className="min-h-[75vh] flex flex-col items-center justify-center px-4 py-16 text-center animate-in fade-in duration-300">
+        <div className="relative mb-6">
+          <div className="w-14 h-14 rounded-2xl bg-amber-500/15 flex items-center justify-center text-amber-700 animate-bounce shadow-inner">
+            <Cookie className="w-7 h-7" />
+          </div>
+          <div className="absolute -inset-2 rounded-2xl bg-amber-400/20 blur-md -z-10 animate-pulse" />
+        </div>
+
+        {/* Domino Lettering from React Bits Pro: letters topple like dominoes and rebuild */}
+        <DominoLettering
+          text={settings?.store_name || 'DAPUR BU NATHA'}
+          variant="tile"
+          direction="right"
+          stagger={0.065}
+          cycleDuration={3.2}
+          className="mb-4"
+        />
+
+        <div className="space-y-1.5 mt-2">
+          <p className="text-xs sm:text-sm font-bold text-amber-800 tracking-wide">
+            Menyiapkan Menu Kue Kering Spesial...
+          </p>
+          <p className="text-[11px] sm:text-xs text-stone-400 max-w-sm mx-auto">
+            {settings?.store_tagline || 'Fresh from the oven dengan bahan butter pilihan'}
+          </p>
+        </div>
+
+        {/* Animated Loading Bar */}
+        <div className="w-48 h-1.5 bg-amber-100 rounded-full overflow-hidden mt-6 shadow-inner">
+          <div className="h-full bg-gradient-to-r from-amber-500 via-amber-600 to-amber-700 rounded-full animate-indeterminate" />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen pb-16">
