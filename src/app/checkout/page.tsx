@@ -21,11 +21,13 @@ import {
   Send,
 } from 'lucide-react';
 import { useCart } from '@/context/CartContext';
+import { useStore } from '@/context/StoreContext';
 import { formatRupiah, isValidIndonesianPhone } from '@/lib/format';
 
 export default function CheckoutPage() {
   const router = useRouter();
   const { items, subtotal, totalItems, updateQuantity, removeFromCart, clearCart } = useCart();
+  const { settings } = useStore();
 
   const [customerName, setCustomerName] = useState('');
   const [customerPhone, setCustomerPhone] = useState('');
@@ -272,7 +274,8 @@ export default function CheckoutPage() {
             ) : (
               <div className="p-3.5 rounded-2xl bg-stone-50 border border-stone-200 text-xs text-stone-600 space-y-1">
                 <div className="font-bold text-stone-800">Alamat Penjemputan Toko:</div>
-                <p>Jl. Melati Indah No. 42, Kebayoran Baru, Jakarta Selatan (Buka 09.00 - 18.00 WIB)</p>
+                <p className="font-medium text-stone-700">{settings.store_address}</p>
+                <p className="text-[11px] text-amber-700">({settings.pickup_instructions})</p>
               </div>
             )}
 

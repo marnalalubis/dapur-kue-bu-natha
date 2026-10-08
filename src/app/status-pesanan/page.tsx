@@ -18,9 +18,11 @@ import {
   MessageCircle,
 } from 'lucide-react';
 import { Order, OrderStatus } from '@/types';
-import { formatRupiah, formatTanggal, getStatusInfo } from '@/lib/format';
+import { formatRupiah, formatTanggal, getStatusInfo, normalizePhoneForWA } from '@/lib/format';
+import { useStore } from '@/context/StoreContext';
 
 function StatusPesananContent() {
+  const { settings } = useStore();
   const searchParams = useSearchParams();
   const initialCode = searchParams.get('code') || '';
   const initialPhone = searchParams.get('phone') || '';
@@ -290,8 +292,8 @@ function StatusPesananContent() {
               Ada pertanyaan seputar pesanan Anda?
             </div>
             <a
-              href={`https://wa.me/6281234567890?text=${encodeURIComponent(
-                `Halo Admin Dapur Bu Natha, saya ingin menanyakan pesanan dengan kode ${order.order_code}.`
+              href={`https://wa.me/${normalizePhoneForWA(settings.store_phone)}?text=${encodeURIComponent(
+                `Halo Admin ${settings.store_name}, saya ingin menanyakan pesanan dengan kode ${order.order_code}.`
               )}`}
               target="_blank"
               rel="noopener noreferrer"

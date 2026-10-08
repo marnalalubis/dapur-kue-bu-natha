@@ -41,11 +41,13 @@ export default function OrderPrintModal({
   const storeName = settings?.store_name || 'Dapur Kue Kering Bu Natha';
   const storeTagline =
     settings?.store_tagline || 'Kue Kering Homemade Fresh from The Oven dengan Butter Pilihan';
-  const storePhone = settings?.store_phone || '0812-3456-7890';
+  const storePhone = settings?.store_phone || '081396144777';
   const storeAddress =
-    settings?.store_address || 'Jl. Melati Indah No. 42, Kebayoran Baru, Jakarta Selatan';
+    settings?.store_address ||
+    'Pardede Onan Kelurahan Pardede Onan Kecmatan Balige Kabupaten Toba Propinsi Sumatera Utara';
   const paymentInfo =
-    settings?.payment_info || 'COD / Ambil di Tempat / Transfer BCA: 123-456-7890 a/n Bu Natha';
+    settings?.payment_info ||
+    'Pembayaran offline saat ambil di tempat / COD / Transfer BANK SUMUT : 123-456-7890 a/n Lidia Triastuti.';
 
   const totalToples = order.items.reduce((sum, it) => sum + it.quantity, 0);
 

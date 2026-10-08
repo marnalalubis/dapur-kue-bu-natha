@@ -246,6 +246,14 @@ function OrderConfirmationContent() {
                 </>
               )}
             </div>
+            {order.fulfillment_method === 'pickup' && settings?.store_address && (
+              <div className="text-stone-600 pt-1 space-y-0.5 border-t border-stone-200/50 mt-1">
+                <p>Alamat Penjemputan: <span className="font-semibold text-stone-900">{settings.store_address}</span></p>
+                {settings.pickup_instructions && (
+                  <p className="text-[11px] text-amber-800">Jam / Keterangan: {settings.pickup_instructions}</p>
+                )}
+              </div>
+            )}
             {order.fulfillment_method === 'delivery' && (
               <p className="text-stone-600">
                 Alamat: <span className="font-medium">{order.customer_address}</span>
@@ -261,9 +269,16 @@ function OrderConfirmationContent() {
           {/* Payment Offline Notice */}
           <div className="p-3.5 rounded-2xl bg-amber-50/60 border border-amber-200/50 text-[11px] text-stone-600 flex items-start gap-2">
             <ShieldAlert className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
-            <span>
-              <strong>Pembayaran dilakukan secara offline</strong> (COD / saat ambil di toko / transfer bank langsung sesuai instruksi chat WhatsApp tanpa upload bukti di web).
-            </span>
+            <div className="space-y-1 w-full">
+              <div>
+                <strong>Pembayaran dilakukan secara offline</strong> (COD / saat ambil di toko / transfer bank langsung sesuai instruksi chat WhatsApp tanpa upload bukti di web).
+              </div>
+              {settings?.payment_info && (
+                <div className="pt-1.5 mt-1 border-t border-amber-200/60 font-semibold text-stone-800">
+                  {settings.payment_info}
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>

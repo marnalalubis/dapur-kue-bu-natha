@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { revalidatePath } from 'next/cache';
 import { getSettings, updateSettings } from '@/lib/db';
 import { checkIsAdmin } from '@/lib/auth';
 
@@ -10,7 +11,14 @@ export async function GET() {
     }
 
     const settings = await getSettings();
-    return NextResponse.json({ success: true, data: settings });
+    return NextResponse.json(
+      { success: true, data: settings },
+      {
+        headers: {
+          'Cache-Control': 'no-store, no-cache, must-revalidate',
+        },
+      }
+    );
   } catch (error: unknown) {
     const message = error instanceof Error ? error.message : 'Gagal memuat pengaturan';
     return NextResponse.json({ success: false, error: message }, { status: 500 });
@@ -26,7 +34,21 @@ export async function PATCH(req: NextRequest) {
 
     const body = await req.json();
     const updated = await updateSettings(body);
-    return NextResponse.json({ success: true, data: updated });
+
+    try {
+      revalidatePath('/', 'layout');
+    } catch {
+      // ignore if not applicable
+    }
+
+    return NextResponse.json(
+      { success: true, data: updated },
+      {
+        headers: {
+          'Cache-Control': 'no-store, no-cache, must-revalidate',
+        },
+      }
+    );
   } catch (error: unknown) {
     const message = error instanceof Error ? error.message : 'Gagal memperbarui pengaturan';
     return NextResponse.json({ success: false, error: message }, { status: 500 });

@@ -4,13 +4,18 @@ import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Cookie, MapPin, Phone, Clock, ShieldCheck, Heart } from 'lucide-react';
+import { useStore } from '@/context/StoreContext';
+import { normalizePhoneForWA } from '@/lib/format';
 
 export default function Footer() {
   const pathname = usePathname();
+  const { settings } = useStore();
 
   if (pathname.startsWith('/admin')) {
     return null;
   }
+
+  const cleanPhone = normalizePhoneForWA(settings.store_phone);
 
   return (
     <footer className="bg-stone-900 text-stone-300 pt-12 pb-24 md:pb-12 border-t border-stone-800 mt-auto">
@@ -22,11 +27,11 @@ export default function Footer() {
               <div className="w-9 h-9 rounded-xl bg-amber-500 flex items-center justify-center text-stone-900">
                 <Cookie className="w-5 h-5 text-white" />
               </div>
-              <span className="font-bold text-lg text-white">Dapur Kue Bu Natha</span>
+              <span className="font-bold text-lg text-white">{settings.store_name}</span>
             </div>
             <p className="text-sm text-stone-400 leading-relaxed">
-              Kue kering premium buatan rumahan dengan bahan butter berkualitas tinggi.
-              Dibuat fresh sesuai pesanan untuk menjaga aroma dan kerenyahan terbaik.
+              {settings.store_tagline ||
+                'Kue kering premium buatan rumahan dengan bahan butter berkualitas tinggi. Dibuat fresh sesuai pesanan untuk menjaga aroma dan kerenyahan terbaik.'}
             </p>
             <div className="flex items-center gap-2 text-xs text-amber-400/90 pt-1">
               <ShieldCheck className="w-4 h-4 text-emerald-400" />
@@ -42,15 +47,22 @@ export default function Footer() {
             <div className="space-y-2.5 text-sm text-stone-400">
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
-                <span>Jl. Melati Indah No. 42, Kebayoran Baru, Jakarta Selatan</span>
+                <span className="leading-snug">{settings.store_address}</span>
               </div>
-              <div className="flex items-center gap-2.5">
-                <Clock className="w-4 h-4 text-amber-400 shrink-0" />
-                <span>Buka Setiap Hari: 09.00 - 18.00 WIB</span>
+              <div className="flex items-start gap-2.5">
+                <Clock className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
+                <span>{settings.pickup_instructions}</span>
               </div>
               <div className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span>WhatsApp: 0812-3456-7890</span>
+                <a
+                  href={`https://wa.me/${cleanPhone}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-emerald-400 transition-colors font-medium"
+                >
+                  WhatsApp: {settings.store_phone}
+                </a>
               </div>
             </div>
           </div>
@@ -81,7 +93,7 @@ export default function Footer() {
         </div>
 
         <div className="pt-8 border-t border-stone-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-500">
-          <p>© 2026 Dapur Kue Bu Natha. Hak Cipta Dilindungi.</p>
+          <p>© {new Date().getFullYear()} {settings.store_name}. Hak Cipta Dilindungi.</p>
           <p className="flex items-center gap-1">
             Dibuat dengan <Heart className="w-3.5 h-3.5 text-rose-500 fill-rose-500" /> untuk pecinta kue kering Indonesia.
           </p>

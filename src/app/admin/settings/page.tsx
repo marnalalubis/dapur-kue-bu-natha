@@ -13,8 +13,10 @@ import {
   ShieldAlert,
 } from 'lucide-react';
 import { StoreSettings } from '@/types';
+import { useStore } from '@/context/StoreContext';
 
 export default function AdminSettingsPage() {
+  const { refreshSettings } = useStore();
   const [settings, setSettings] = useState<StoreSettings | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
@@ -58,6 +60,7 @@ export default function AdminSettingsPage() {
       if (!res.ok || !data.success) throw new Error(data.error);
 
       setSettings(data.data);
+      await refreshSettings();
       setSaveSuccess(true);
       setTimeout(() => setSaveSuccess(false), 3000);
     } catch (err: unknown) {

@@ -5,14 +5,19 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Cookie, ShoppingBag, Search, MessageSquare } from 'lucide-react';
 import { useCart } from '@/context/CartContext';
+import { useStore } from '@/context/StoreContext';
+import { normalizePhoneForWA } from '@/lib/format';
 
 export default function MobileBottomNav() {
   const pathname = usePathname();
   const { totalItems, setIsCartOpen } = useCart();
+  const { settings } = useStore();
 
   if (pathname.startsWith('/admin')) {
     return null;
   }
+
+  const cleanPhone = normalizePhoneForWA(settings.store_phone);
 
   return (
     <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-amber-100 px-3 py-2 shadow-lg shadow-stone-900/10">
@@ -53,7 +58,7 @@ export default function MobileBottomNav() {
         </Link>
 
         <a
-          href="https://wa.me/6281234567890"
+          href={`https://wa.me/${cleanPhone}`}
           target="_blank"
           rel="noopener noreferrer"
           className="flex flex-col items-center justify-center py-1 rounded-xl text-emerald-600 hover:text-emerald-700 transition-colors"

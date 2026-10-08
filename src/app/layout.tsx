@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import React, { Suspense } from 'react';
 import './globals.css';
+import { StoreProvider } from '@/context/StoreContext';
 import { CartProvider } from '@/context/CartContext';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -46,19 +47,21 @@ export default function RootLayout({
   return (
     <html lang="id" className="h-full antialiased scroll-smooth">
       <body className="min-h-full flex flex-col bg-[#fffdfa] text-stone-800 selection:bg-amber-100 selection:text-amber-900">
-        <CartProvider>
-          <Suspense fallback={null}>
-            <Navbar />
-          </Suspense>
-          <CartDrawer />
-          <main className="flex-1">{children}</main>
-          <Suspense fallback={null}>
-            <Footer />
-          </Suspense>
-          <Suspense fallback={null}>
-            <MobileBottomNav />
-          </Suspense>
-        </CartProvider>
+        <StoreProvider>
+          <CartProvider>
+            <Suspense fallback={null}>
+              <Navbar />
+            </Suspense>
+            <CartDrawer />
+            <main className="flex-1">{children}</main>
+            <Suspense fallback={null}>
+              <Footer />
+            </Suspense>
+            <Suspense fallback={null}>
+              <MobileBottomNav />
+            </Suspense>
+          </CartProvider>
+        </StoreProvider>
       </body>
     </html>
   );

@@ -5,15 +5,20 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Cookie, ShoppingBag, Search, Phone } from 'lucide-react';
 import { useCart } from '@/context/CartContext';
+import { useStore } from '@/context/StoreContext';
+import { normalizePhoneForWA } from '@/lib/format';
 
 export default function Navbar() {
   const pathname = usePathname();
   const { totalItems, setIsCartOpen } = useCart();
+  const { settings } = useStore();
 
   // If in admin area, hide customer navbar
   if (pathname.startsWith('/admin')) {
     return null;
   }
+
+  const cleanPhone = normalizePhoneForWA(settings.store_phone);
 
   return (
     <header className="sticky top-0 z-40 w-full glass-header border-b border-amber-100/80 transition-all">
@@ -25,10 +30,10 @@ export default function Navbar() {
           </div>
           <div className="flex flex-col">
             <span className="font-bold text-base sm:text-lg tracking-tight text-stone-900 group-hover:text-amber-800 transition-colors">
-              Dapur Kue Bu Natha
+              {settings.store_name}
             </span>
-            <span className="text-[11px] sm:text-xs text-amber-700/80 font-medium -mt-0.5">
-              Kue Kering Homemade & Butter
+            <span className="text-[11px] sm:text-xs text-amber-700/80 font-medium -mt-0.5 line-clamp-1 max-w-[220px] sm:max-w-none">
+              {settings.store_tagline || 'Kue Kering Homemade & Butter'}
             </span>
           </div>
         </Link>
@@ -53,7 +58,7 @@ export default function Navbar() {
             Lacak Pesanan
           </Link>
           <a
-            href="https://wa.me/6281234567890"
+            href={`https://wa.me/${cleanPhone}`}
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-amber-700 transition-colors flex items-center gap-1.5"

@@ -27,6 +27,10 @@ interface DatabaseSchema {
 
 const DATA_DIR = path.join(process.cwd(), 'data');
 const DB_FILE = path.join(DATA_DIR, 'cookie_store.json');
+const TMP_DB_FILE = path.join('/tmp', 'cookie_store.json');
+
+// Memory cache to preserve runtime mutations in serverless lambda instances
+let inMemoryDb: DatabaseSchema | null = null;
 
 const INITIAL_CATEGORIES: Category[] = [
   { id: 'cat-1', name: 'Kue Klasik Lebaran', slug: 'kue-klasik' },
@@ -185,14 +189,14 @@ const INITIAL_PRODUCTS: Product[] = [
 const INITIAL_SETTINGS: StoreSettings = {
   store_name: 'Dapur Kue Kering Bu Natha',
   store_tagline: 'Kue Kering Homemade Fresh from The Oven dengan Butter Pilihan',
-  store_phone: '081234567890',
-  store_address: 'Jl. Melati Indah No. 42, Kebayoran Baru, Jakarta Selatan',
-  pickup_instructions:
-    'Pengambilan pesanan tersedia setiap hari pukul 09.00 - 18.00 WIB. Mohon informasikan 1 jam sebelum tiba via WhatsApp.',
+  store_phone: '081396144777',
+  store_address:
+    'Pardede Onan Kelurahan Pardede Onan Kecmatan Balige Kabupaten Toba Propinsi Sumatera Utara',
+  pickup_instructions: 'Pengambilan pesanan tersedia setiap saat',
   delivery_note:
-    'Pengiriman manual area Jadetabek via Kurir Instan (Grab/Gojek) atau Paxel untuk luar kota. Biaya ongkir dikonfirmasi via WA.',
+    'Pengiriman manual via kurir lokal atau ekspedisi Paxel. Biaya ongkir dikonfirmasi via WA.',
   payment_info:
-    'Pembayaran offline saat ambil di tempat / COD / Transfer BCA: 123-456-7890 a/n Bu Natha.',
+    'Pembayaran offline saat ambil di tempat / COD / Transfer BANK SUMUT : 123-456-7890 a/n Lidia Triastuti.',
   is_store_open: true,
   closed_reason: 'Toko sedang dalam masa pemeliharaan oven rutin.',
 };
@@ -358,14 +362,20 @@ async function ensureDbInitialized(): Promise<DatabaseSchema> {
         for (const p of data.products) {
           if (p.ready_stock === undefined) p.ready_stock = 0;
         }
+        inMemoryDb = data;
         return data;
       }
 
-      // Initial seed to Neon from local JSON or defaults
+      // Initial seed to Neon from local JSON, /tmp, or defaults
       let initialData: DatabaseSchema;
       try {
-        const localContent = await fs.readFile(DB_FILE, 'utf-8');
-        initialData = JSON.parse(localContent) as DatabaseSchema;
+        let content = '';
+        try {
+          content = await fs.readFile(TMP_DB_FILE, 'utf-8');
+        } catch {
+          content = await fs.readFile(DB_FILE, 'utf-8');
+        }
+        initialData = JSON.parse(content) as DatabaseSchema;
       } catch {
         initialData = {
           categories: INITIAL_CATEGORIES,
@@ -385,10 +395,26 @@ async function ensureDbInitialized(): Promise<DatabaseSchema> {
         VALUES ('main', ${JSON.stringify(initialData)}, CURRENT_TIMESTAMP)
         ON CONFLICT (id) DO UPDATE SET data = EXCLUDED.data, updated_at = CURRENT_TIMESTAMP;
       `;
+      inMemoryDb = initialData;
       return initialData;
     } catch (err) {
       console.error('Neon DB query error, falling back to local file:', err);
     }
+  }
+
+  // Return in-memory database if already loaded/modified
+  if (inMemoryDb) {
+    return inMemoryDb;
+  }
+
+  // Check /tmp first (if previously written during serverless invocation)
+  try {
+    const tmpContent = await fs.readFile(TMP_DB_FILE, 'utf-8');
+    const data = JSON.parse(tmpContent) as DatabaseSchema;
+    inMemoryDb = data;
+    return data;
+  } catch {
+    // not in /tmp
   }
 
   // Fallback to local file
@@ -406,6 +432,7 @@ async function ensureDbInitialized(): Promise<DatabaseSchema> {
     if (needsSave) {
       await fs.writeFile(DB_FILE, JSON.stringify(data, null, 2), 'utf-8');
     }
+    inMemoryDb = data;
     return data;
   } catch {
     const initialData: DatabaseSchema = {
@@ -419,12 +446,25 @@ async function ensureDbInitialized(): Promise<DatabaseSchema> {
         name: 'Pemilik Toko (Bu Natha)',
       },
     };
-    await fs.writeFile(DB_FILE, JSON.stringify(initialData, null, 2), 'utf-8');
+    try {
+      await fs.writeFile(DB_FILE, JSON.stringify(initialData, null, 2), 'utf-8');
+    } catch {
+      // In read-only env, save to /tmp
+      try {
+        await fs.writeFile(TMP_DB_FILE, JSON.stringify(initialData, null, 2), 'utf-8');
+      } catch {
+        // memory fallback
+      }
+    }
+    inMemoryDb = initialData;
     return initialData;
   }
 }
 
 async function saveDb(data: DatabaseSchema): Promise<void> {
+  // Always update memory cache immediately
+  inMemoryDb = data;
+
   const sql = getNeonSql();
   if (sql) {
     try {
@@ -439,13 +479,21 @@ async function saveDb(data: DatabaseSchema): Promise<void> {
     }
   }
 
+  // Attempt to write to local data directory
   try {
     await fs.mkdir(DATA_DIR, { recursive: true });
     const tempFile = `${DB_FILE}.tmp.${Date.now()}`;
     await fs.writeFile(tempFile, JSON.stringify(data, null, 2), 'utf-8');
     await fs.rename(tempFile, DB_FILE);
+    return;
   } catch (err) {
-    console.error('Failed to save to local file:', err);
+    // If read-only filesystem (like Vercel serverless lambda), write to /tmp
+    try {
+      await fs.writeFile(TMP_DB_FILE, JSON.stringify(data, null, 2), 'utf-8');
+      return;
+    } catch (tmpErr) {
+      console.error('Failed to save to local and /tmp file:', err, tmpErr);
+    }
   }
 }
 

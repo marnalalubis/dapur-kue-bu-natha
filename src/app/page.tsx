@@ -18,12 +18,13 @@ import {
 import { Product, Category, StoreSettings } from '@/types';
 import ProductCard from '@/components/ProductCard';
 import { useCart } from '@/context/CartContext';
+import { useStore } from '@/context/StoreContext';
 import { formatRupiah } from '@/lib/format';
 
 export default function HomePage() {
   const [products, setProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
-  const [settings, setSettings] = useState<StoreSettings | null>(null);
+  const { settings } = useStore();
   const [isLoading, setIsLoading] = useState(true);
 
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
@@ -34,15 +35,13 @@ export default function HomePage() {
     async function loadData() {
       try {
         setIsLoading(true);
-        const [pRes, cRes, sRes] = await Promise.all([
+        const [pRes, cRes] = await Promise.all([
           fetch('/api/products').then((r) => r.json()),
           fetch('/api/categories').then((r) => r.json()),
-          fetch('/api/settings/public').then((r) => r.json()),
         ]);
 
         if (pRes.success) setProducts(pRes.data);
         if (cRes.success) setCategories(cRes.data);
-        if (sRes.success) setSettings(sRes.data);
       } catch (err) {
         console.error('Failed to fetch data', err);
       } finally {
@@ -95,8 +94,8 @@ export default function HomePage() {
               </h1>
 
               <p className="text-sm sm:text-base text-stone-600 max-w-xl leading-relaxed mx-auto lg:mx-0">
-                Dibuat dengan resep warisan keluarga menggunakan butter pilihan dan keju impor.
-                Renyah, gurih, dan lumer di mulut tanpa pengawet buatan.
+                {settings?.store_tagline ||
+                  'Dibuat dengan resep warisan keluarga menggunakan butter pilihan dan keju impor. Renyah, gurih, dan lumer di mulut tanpa pengawet buatan.'}
               </p>
 
               {/* Badges */}
