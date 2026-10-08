@@ -167,12 +167,7 @@ export default function ProductionPlanningPage() {
       {/* Top Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 print:hidden">
         <div>
-          <div className="flex items-center gap-2">
-            <span className="text-[11px] font-bold px-2 py-0.5 rounded bg-amber-100 text-amber-800 uppercase tracking-wider">
-              PRD F-23 • Fitur Utama
-            </span>
-          </div>
-          <h1 className="text-2xl sm:text-3xl font-black text-stone-900 tracking-tight mt-1 flex items-center gap-2.5">
+          <h1 className="text-2xl sm:text-3xl font-black text-stone-900 tracking-tight flex items-center gap-2.5">
             <ChefHat className="w-7 h-7 text-amber-600" />
             <span>Kebutuhan Stok Produksi (Baking Queue)</span>
           </h1>

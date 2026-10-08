@@ -83,15 +83,11 @@ export default function AdminLayout({
       label: 'Kebutuhan Stok Produksi',
       href: '/admin/production',
       icon: ChefHat,
-      highlight: true,
-      badge: 'F-23',
     },
     {
       label: 'Rekap Pelanggan',
       href: '/admin/customers',
       icon: Users,
-      highlight: true,
-      badge: 'F-22',
     },
     {
       label: 'Daftar Pesanan',
@@ -143,8 +139,6 @@ export default function AdminLayout({
                 className={`flex items-center justify-between px-3.5 py-2.5 rounded-2xl text-xs font-bold transition-all ${
                   isActive
                     ? 'bg-amber-600 text-white shadow-md shadow-amber-600/30'
-                    : item.highlight
-                    ? 'text-amber-300 hover:bg-stone-800 hover:text-white'
                     : 'text-stone-400 hover:bg-stone-800 hover:text-white'
                 }`}
               >
@@ -152,17 +146,6 @@ export default function AdminLayout({
                   <Icon className="w-4 h-4" />
                   <span>{item.label}</span>
                 </div>
-                {item.badge && (
-                  <span
-                    className={`text-[9px] px-1.5 py-0.5 rounded-md font-extrabold ${
-                      isActive
-                        ? 'bg-white/20 text-white'
-                        : 'bg-amber-500/20 text-amber-400 border border-amber-500/30'
-                    }`}
-                  >
-                    {item.badge}
-                  </span>
-                )}
               </Link>
             );
           })}
@@ -229,11 +212,6 @@ export default function AdminLayout({
                   <Icon className="w-4 h-4" />
                   <span>{item.label}</span>
                 </div>
-                {item.badge && (
-                  <span className="text-[9px] px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300">
-                    {item.badge}
-                  </span>
-                )}
               </Link>
             );
           })}

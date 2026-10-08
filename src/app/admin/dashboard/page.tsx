@@ -104,7 +104,7 @@ export default function AdminDashboardPage() {
           className="bg-gradient-to-br from-amber-600 to-amber-700 text-white p-5 rounded-3xl shadow-lg shadow-amber-600/20 space-y-3 hover:scale-[1.02] transition-transform"
         >
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold text-amber-100">Antrean Panggang (F-23)</span>
+            <span className="text-xs font-bold text-amber-100">Antrean Panggang</span>
             <div className="w-9 h-9 rounded-xl bg-white/20 text-white flex items-center justify-center">
               <ChefHat className="w-5 h-5" />
             </div>
@@ -169,14 +169,9 @@ export default function AdminDashboardPage() {
             <ChefHat className="w-6 h-6" />
           </div>
           <div className="space-y-1">
-            <div className="flex items-center gap-2">
-              <h3 className="font-extrabold text-stone-900 text-base">
-                Kebutuhan Stok Produksi (Baking Queue)
-              </h3>
-              <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-amber-100 text-amber-800">
-                F-23
-              </span>
-            </div>
+            <h3 className="font-extrabold text-stone-900 text-base">
+              Kebutuhan Stok Produksi (Baking Queue)
+            </h3>
             <p className="text-xs text-stone-500 leading-relaxed">
               Melihat total toples kue yang harus dipanggang hari ini secara otomatis dari seluruh pesanan baru & diproses tanpa hitung manual.
             </p>
@@ -196,14 +191,9 @@ export default function AdminDashboardPage() {
             <Users className="w-6 h-6" />
           </div>
           <div className="space-y-1">
-            <div className="flex items-center gap-2">
-              <h3 className="font-extrabold text-stone-900 text-base">
-                Rekapan Pesanan per Pelanggan
-              </h3>
-              <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-blue-100 text-blue-800">
-                F-22
-              </span>
-            </div>
+            <h3 className="font-extrabold text-stone-900 text-base">
+              Rekapan Pesanan per Pelanggan
+            </h3>
             <p className="text-xs text-stone-500 leading-relaxed">
               Riwayat belanja pelanggan loyal teragregasi berdasarkan Nomor WhatsApp. Ketahui frekuensi beli dan hubungi kembali via WA.
             </p>
