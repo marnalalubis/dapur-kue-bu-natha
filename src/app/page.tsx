@@ -21,6 +21,7 @@ import { useCart } from '@/context/CartContext';
 import { useStore } from '@/context/StoreContext';
 import { formatRupiah } from '@/lib/format';
 import DominoLettering from '@/components/DominoLettering';
+import MeshLettering from '@/components/MeshLettering';
 
 export default function HomePage() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -124,17 +125,40 @@ export default function HomePage() {
                 <span>Fresh from The Oven • 100% Wijsman Butter</span>
               </div>
 
-              <h1 className="text-3xl sm:text-5xl font-black text-stone-900 tracking-tight leading-tight">
-                Kelezatan Kue Kering{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 to-amber-800">
-                  Homemade Spesial
-                </span>
-              </h1>
+              <div className="space-y-3">
+                <MeshLettering
+                  text="Kelezatan Kue Kering Homemade Spesial"
+                  colors={['#854d0e', '#fef08a']}
+                  sheen={1.4}
+                  gloss={0.88}
+                  iridescence={0.65}
+                  wind={1.15}
+                  fontSize={44}
+                  fontWeight="900"
+                  lineHeight={1.15}
+                  textAlign="auto"
+                  as="h1"
+                  className="max-w-2xl mx-auto lg:mx-0 cursor-pointer active:cursor-grabbing drop-shadow-xs"
+                />
 
-              <p className="text-sm sm:text-base text-stone-600 max-w-xl leading-relaxed mx-auto lg:mx-0">
-                {settings?.store_tagline ||
-                  'Dibuat dengan resep warisan keluarga menggunakan butter pilihan dan keju impor. Renyah, gurih, dan lumer di mulut tanpa pengawet buatan.'}
-              </p>
+                <MeshLettering
+                  text={
+                    settings?.store_tagline ||
+                    'Kue Kering Homemade Fresh from The Oven dengan Butter Pilihan Yang Terbaik'
+                  }
+                  colors={['#78350f', '#fde68a']}
+                  sheen={1.2}
+                  gloss={0.78}
+                  iridescence={0.5}
+                  wind={0.9}
+                  fontSize={17}
+                  fontWeight="600"
+                  lineHeight={1.4}
+                  textAlign="auto"
+                  as="p"
+                  className="max-w-xl mx-auto lg:mx-0 cursor-pointer active:cursor-grabbing"
+                />
+              </div>
 
               {/* Badges */}
               <div className="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-4 text-xs font-semibold text-stone-700">

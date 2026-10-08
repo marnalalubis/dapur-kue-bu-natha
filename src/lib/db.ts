@@ -188,7 +188,8 @@ const INITIAL_PRODUCTS: Product[] = [
 
 const INITIAL_SETTINGS: StoreSettings = {
   store_name: 'Dapur Kue Kering Bu Natha',
-  store_tagline: 'Kue Kering Homemade Fresh from The Oven dengan Butter Pilihan',
+  store_tagline:
+    'Kue Kering Homemade Fresh from The Oven dengan Butter Pilihan Yang Terbaik',
   store_phone: '081396144777',
   store_address:
     'Pardede Onan Kelurahan Pardede Onan Kecmatan Balige Kabupaten Toba Propinsi Sumatera Utara',

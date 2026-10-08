@@ -11,7 +11,8 @@ interface StoreContextType {
 
 export const DEFAULT_SETTINGS: StoreSettings = {
   store_name: 'Dapur Kue Kering Bu Natha',
-  store_tagline: 'Kue Kering Homemade Fresh from The Oven dengan Butter Pilihan',
+  store_tagline:
+    'Kue Kering Homemade Fresh from The Oven dengan Butter Pilihan Yang Terbaik',
   store_phone: '081396144777',
   store_address: 'Pardede Onan Kelurahan Pardede Onan Kecmatan Balige Kabupaten Toba Propinsi Sumatera Utara',
   pickup_instructions: 'Pengambilan pesanan tersedia setiap saat',
