@@ -505,6 +505,85 @@ export async function getCategories(): Promise<Category[]> {
   return db.categories;
 }
 
+export async function getCategoryById(id: string): Promise<Category | null> {
+  const db = await ensureDbInitialized();
+  return db.categories.find((c) => c.id === id) || null;
+}
+
+export async function createCategory(data: { name: string; slug?: string }): Promise<Category> {
+  const db = await ensureDbInitialized();
+  const name = data.name.trim();
+  const slug = (data.slug?.trim() || name)
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)+/g, '');
+
+  const newCategory: Category = {
+    id: `cat-${Date.now()}`,
+    name,
+    slug: slug || `kategori-${Date.now()}`,
+  };
+
+  db.categories.push(newCategory);
+  await saveDb(db);
+  return newCategory;
+}
+
+export async function updateCategory(
+  id: string,
+  updates: { name?: string; slug?: string }
+): Promise<Category | null> {
+  const db = await ensureDbInitialized();
+  const idx = db.categories.findIndex((c) => c.id === id);
+  if (idx === -1) return null;
+
+  const current = db.categories[idx];
+  const newName = updates.name !== undefined ? updates.name.trim() : current.name;
+  let newSlug = current.slug;
+  if (updates.slug !== undefined) {
+    newSlug = updates.slug.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+  } else if (updates.name !== undefined) {
+    newSlug = newName.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+  }
+
+  db.categories[idx] = {
+    ...current,
+    name: newName,
+    slug: newSlug || current.slug,
+  };
+
+  // Sync category_name across products that use this category
+  db.products.forEach((p) => {
+    if (p.category_id === id) {
+      p.category_name = newName;
+    }
+  });
+
+  await saveDb(db);
+  return db.categories[idx];
+}
+
+export async function deleteCategory(id: string): Promise<{ success: boolean; error?: string }> {
+  const db = await ensureDbInitialized();
+  const exists = db.categories.find((c) => c.id === id);
+  if (!exists) {
+    return { success: false, error: 'Kategori tidak ditemukan' };
+  }
+
+  // Check if any product is using this category
+  const inUseCount = db.products.filter((p) => p.category_id === id).length;
+  if (inUseCount > 0) {
+    return {
+      success: false,
+      error: `Kategori tidak dapat dihapus karena masih digunakan oleh ${inUseCount} kue dalam katalog. Pindahkan atau ubah kategori kue tersebut terlebih dahulu.`,
+    };
+  }
+
+  db.categories = db.categories.filter((c) => c.id !== id);
+  await saveDb(db);
+  return { success: true };
+}
+
 export async function getProducts(options?: {
   categoryId?: string;
   isAvailableOnly?: boolean;

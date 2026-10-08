@@ -14,9 +14,12 @@ import {
   UploadCloud,
   Camera,
   Loader2,
+  Tags,
+  FolderPlus,
 } from 'lucide-react';
 import { Product, Category } from '@/types';
 import { formatRupiah } from '@/lib/format';
+import CategoryManagerModal from '@/components/CategoryManagerModal';
 
 export default function AdminProductsPage() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -25,6 +28,7 @@ export default function AdminProductsPage() {
 
   // Form Modal state
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isCategoryModalOpen, setIsCategoryModalOpen] = useState(false);
   const [editingProduct, setEditingProduct] = useState<Product | null>(null);
 
   const [formName, setFormName] = useState('');
@@ -104,6 +108,20 @@ export default function AdminProductsPage() {
   useEffect(() => {
     fetchProducts();
   }, []);
+
+  const handleCategoryChange = (updatedCategories: Category[], newlyCreatedId?: string) => {
+    setCategories(updatedCategories);
+    if (newlyCreatedId) {
+      setFormCategoryId(newlyCreatedId);
+    }
+    // Refresh products in case category names were changed
+    fetch('/api/admin/products')
+      .then((r) => r.json())
+      .then((data) => {
+        if (data.success) setProducts(data.data);
+      })
+      .catch(console.error);
+  };
 
   const openCreateModal = () => {
     setEditingProduct(null);
@@ -253,13 +271,24 @@ export default function AdminProductsPage() {
           </p>
         </div>
 
-        <button
-          onClick={openCreateModal}
-          className="px-4 py-2.5 bg-amber-600 hover:bg-amber-700 text-white rounded-2xl font-bold text-xs flex items-center gap-2 shadow-md shadow-amber-600/20 transition-all self-start sm:self-auto"
-        >
-          <Plus className="w-4 h-4" />
-          <span>Tambah Kue Baru</span>
-        </button>
+        <div className="flex items-center gap-2.5 self-start sm:self-auto">
+          <button
+            type="button"
+            onClick={() => setIsCategoryModalOpen(true)}
+            className="px-3.5 py-2.5 bg-stone-100 hover:bg-stone-200 text-stone-700 rounded-2xl font-bold text-xs flex items-center gap-2 border border-stone-200/80 transition-all shadow-2xs"
+          >
+            <Tags className="w-4 h-4 text-stone-600" />
+            <span>Kelola Kategori</span>
+          </button>
+
+          <button
+            onClick={openCreateModal}
+            className="px-4 py-2.5 bg-amber-600 hover:bg-amber-700 text-white rounded-2xl font-bold text-xs flex items-center gap-2 shadow-md shadow-amber-600/20 transition-all"
+          >
+            <Plus className="w-4 h-4" />
+            <span>Tambah Kue Baru</span>
+          </button>
+        </div>
       </div>
 
       {/* Products Table */}
@@ -430,9 +459,20 @@ export default function AdminProductsPage() {
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-bold text-stone-700 mb-1">
-                    Kategori <span className="text-rose-500">*</span>
-                  </label>
+                  <div className="flex items-center justify-between mb-1">
+                    <label className="block text-xs font-bold text-stone-700">
+                      Kategori <span className="text-rose-500">*</span>
+                    </label>
+                    <button
+                      type="button"
+                      onClick={() => setIsCategoryModalOpen(true)}
+                      className="text-[11px] font-semibold text-amber-700 hover:text-amber-800 flex items-center gap-1 hover:underline"
+                      title="Tambah atau edit kategori kue"
+                    >
+                      <FolderPlus className="w-3.5 h-3.5" />
+                      <span>+ Kelola / Tambah</span>
+                    </button>
+                  </div>
                   <select
                     value={formCategoryId}
                     onChange={(e) => setFormCategoryId(e.target.value)}
@@ -645,6 +685,15 @@ export default function AdminProductsPage() {
           </div>
         </div>
       )}
+
+      {/* Category Manager Modal */}
+      <CategoryManagerModal
+        isOpen={isCategoryModalOpen}
+        onClose={() => setIsCategoryModalOpen(false)}
+        categories={categories}
+        products={products}
+        onCategoryChange={handleCategoryChange}
+      />
     </div>
   );
 }
